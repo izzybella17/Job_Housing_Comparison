@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 
 def meters_to_miles(meters):
     # converts meter to miles
@@ -34,3 +35,8 @@ def seconds_to_display(time_float):
         return f"{hours}h{minutes}m"
     return f"{minutes}m"
 
+def estimate_departure(time_estimate, arrival_time):
+    arrival = datetime.strptime(arrival_time, "%H:%M")
+    duration = timedelta(seconds=time_estimate)
+    departure = arrival - duration
+    return f"2026-10-26T{departure.strftime("%H:%M:%S")}-07:00"
